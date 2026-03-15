@@ -1,0 +1,35 @@
+spring:
+    application:
+        name: materials-service
+    data:
+        mongodb:
+            uri: mongodb://localhost:27017/materialsdb
+    servlet:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 10MB
+
+server:
+    port: 8081
+
+file:
+    upload-dir: ./uploaded_files
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info
+    endpoint:
+        health:
+            show-details: always
+
+logging:
+    level:
+        org.springframework.web: DEBUG
+
+devtools:
+    restart:
+        enabled: true
+    livereload:
+        enabled: true

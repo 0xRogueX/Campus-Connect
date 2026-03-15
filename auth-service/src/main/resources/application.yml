@@ -1,0 +1,91 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+
+spring:
+  # —— Spring Boot DevTools — enable restart & LiveReload
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: postgres
+    password: PostgreSQL@vd07
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 600000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: changaniprince111@gmail.com
+    password: zftpqiabzglxtzwv
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
+          timeout: 5000
+          connectiontimeout: 5000
+          writetimeout: 5000
+    test-connection: false
+
+  # If you previously excluded Redis auto-config and want to re-enable it, comment these out:
+  # autoconfigure:
+  #   exclude:
+  #     - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+
+# Base64-encoded 64 bytes = 512 bits
+jwt:
+  secret: N3NsSgCn+BSAChtlZA09z3mdUlSO+jMl6sQwMjM6gw7KeyN9JCZQIkPMPtshD/fihSwuBz4VZ6e4Ui0+9Fu0iw==
+  expiration-ms: 86400000
+
+logging:
+  level:
+    com.campusconnect.authservice: DEBUG
+    org.springframework.security: INFO
+    org.hibernate.SQL: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+
+  endpoint:
+    health:
+      show-details: when-authorized
+
+  health:
+    mail:
+      enabled: false
+    # redis:
+    #   enabled: false
+
+
+springdoc:
+  api-docs:
+    path: /auth/v3/api-docs
+  swagger-ui:
+    path: /auth/swagger-ui.html

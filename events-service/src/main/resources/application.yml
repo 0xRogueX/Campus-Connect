@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: events-service
+
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8060
+
+aws:
+  access-key: AKIAVIOZFWD5KKS52JQI
+  secret-key: mHrwxLAbthb122yNRY6b+YMEpZTNL1xwDJCK+XvL
+  region: ap-south-1   # <-- Replace this with actual region like 'ap-south-1'
+  s3:
+    bucket-name: campusconnectst
+  java:
+    v1:
+      disableDeprecationAnnouncement: true

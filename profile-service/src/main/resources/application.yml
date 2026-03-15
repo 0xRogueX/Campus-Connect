@@ -1,0 +1,30 @@
+server:
+  port: 8030
+
+spring:
+  application:
+    name: profile-service
+
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/profilesdb
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Use your real issuer URI (OIDC discovery) or uncomment jwk-set-uri instead:
+          issuer-uri: https://auth.example.com/realms/campusconnect
+          # jwk-set-uri: https://auth.example.com/realms/campusconnect/protocol/openid-connect/certs
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
